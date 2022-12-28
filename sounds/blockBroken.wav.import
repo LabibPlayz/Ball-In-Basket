@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blockBroken.wav-e00d94e9658a405c3bf15f2c3df5c1f0.sample"
+
+[deps]
+
+source_file="res://sounds/blockBroken.wav"
+dest_files=[ "res://.import/blockBroken.wav-e00d94e9658a405c3bf15f2c3df5c1f0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

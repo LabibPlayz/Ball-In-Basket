@@ -1,0 +1,208 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Block.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BlockType2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://fonts/Redkost Comic.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://scripts/Restart.gd" type="Script" id=5]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0.788235, 1, 1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0.180392, 0.533333, 1 )
+
+[sub_resource type="BoxShape" id=6]
+
+[sub_resource type="SphereMesh" id=12]
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0.988235, 1, 0, 1 )
+
+[sub_resource type="SphereShape" id=14]
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.988235, 1, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.988235, 1, 0, 1 )
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 1, 1, 1.26051 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 40
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 18
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 30
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="Level" type="Spatial"]
+
+[node name="LevelEnvironment" type="Spatial" parent="."]
+
+[node name="floor" type="StaticBody" parent="LevelEnvironment"]
+
+[node name="MeshInstance" type="MeshInstance" parent="LevelEnvironment/floor"]
+transform = Transform( 2.14, 0, 0, 0, 3.25, 0, 0, 0, 17.363, 0, 3, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelEnvironment/floor"]
+transform = Transform( 2.14, 0, 0, 0, 3.25, 0, 0, 0, 17.363, 0, 3, 0 )
+shape = SubResource( 3 )
+
+[node name="wallBack" type="StaticBody" parent="LevelEnvironment"]
+
+[node name="MeshInstance" type="MeshInstance" parent="LevelEnvironment/wallBack"]
+transform = Transform( 0.0537862, 0, 0, 0, 6.53565, 0, 0, 0, 17.363, 2.07166, 12.4833, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelEnvironment/wallBack"]
+transform = Transform( 0.0537862, 0, 0, 0, 31.9713, 0, 0, 0, 84.8183, 2.07166, 12.4833, 0 )
+shape = SubResource( 6 )
+
+[node name="blocks" type="Spatial" parent="LevelEnvironment"]
+
+[node name="Block1" parent="LevelEnvironment/blocks" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 6.87513, 1.10613 )
+
+[node name="Block2" parent="LevelEnvironment/blocks" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.06139, 0 )
+
+[node name="Block3" parent="LevelEnvironment/blocks" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.06139, 2.19893 )
+
+[node name="Block4" parent="LevelEnvironment/blocks" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.422, 0 )
+
+[node name="Block5" parent="LevelEnvironment/blocks" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 11.5961, 1.10613 )
+
+[node name="Block6" parent="LevelEnvironment/blocks" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 9.26352, 1.10613 )
+
+[node name="Block7" parent="LevelEnvironment/blocks" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.4123, 2.19893 )
+
+[node name="Player" type="RigidBody" parent="LevelEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.7205, 1.05497 )
+can_sleep = false
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LevelEnvironment/Player"]
+transform = Transform( 0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelEnvironment/Player"]
+transform = Transform( 0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0 )
+shape = SubResource( 14 )
+
+[node name="Goal" type="StaticBody" parent="LevelEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8332, 4.92089 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LevelEnvironment/Goal"]
+transform = Transform( 0.844212, 0, 0, 0, 0.104354, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="LevelEnvironment/Goal"]
+transform = Transform( 0.844212, 0, 0, 0, 0.0519451, 0.489334, 0, -0.0905069, 0.280846, 0, 0.435797, 1.19007 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="LevelEnvironment/Goal"]
+transform = Transform( 0.844212, 0, 0, 0, 0.0519451, -0.489334, 0, 0.0905069, 0.280846, 0, 0.435578, -1.19119 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelEnvironment/Goal"]
+transform = Transform( 0.844212, 0, 0, 0, 0.104354, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="LevelEnvironment/Goal"]
+transform = Transform( 0.844212, 0, 0, 0, 0.0519451, 0.489334, 0, -0.0905069, 0.280846, 0, 0.435797, 1.19007 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="LevelEnvironment/Goal"]
+transform = Transform( 0.844212, 0, 0, 0, 0.0519451, -0.489334, 0, 0.0905069, 0.280846, 0, 0.435578, -1.19119 )
+shape = SubResource( 10 )
+
+[node name="Finish" type="Area" parent="LevelEnvironment/Goal"]
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelEnvironment/Goal/Finish"]
+transform = Transform( 0.832787, 0, 0, 0, 0.0665548, 0, 0, 0, 1, 0, 0.488878, 0 )
+shape = SubResource( 11 )
+
+[node name="Label" type="Label" parent="LevelEnvironment"]
+margin_left = 201.0
+margin_top = 16.0
+margin_right = 1260.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 15 )
+text = "click on the blue blocks to delete them"
+
+[node name="Label2" type="Label" parent="LevelEnvironment"]
+margin_left = 315.0
+margin_top = 69.0
+margin_right = 999.0
+margin_bottom = 110.0
+custom_fonts/font = SubResource( 16 )
+text = "(is a little buggy so you have have to click multiple times)"
+
+[node name="Label3" type="Label" parent="LevelEnvironment"]
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 142.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 18 )
+text = "Level - 1"
+
+[node name="Button" type="Button" parent="LevelEnvironment"]
+margin_left = 13.0
+margin_top = 660.0
+margin_right = 204.0
+margin_bottom = 709.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 0.486275, 0.486275, 0.486275, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 17 )
+text = "RESTART"
+flat = true
+script = ExtResource( 5 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.61572, 9.11851, 0.0821589 )
+current = true
+
+[connection signal="body_entered" from="LevelEnvironment/Goal/Finish" to="LevelEnvironment/Player" method="_on_Finish_body_entered"]
+[connection signal="pressed" from="LevelEnvironment/Button" to="LevelEnvironment/Button" method="_on_Button_pressed"]
